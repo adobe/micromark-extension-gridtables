@@ -16,10 +16,6 @@
 $ npm install @adobe/micromark-extension-gridtables
 ```
 
-## Usage
-
-See the [API documentation](docs/API.md).
-
 ## Development
 
 ### Build
