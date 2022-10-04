@@ -1,0 +1,43 @@
+<h2>single grid line</h2>
+<p>+---------+-----+</p>
+<h2>open cells</h2>
+<p>+----+
+| A0 |
++----+
+| foo</p>
+<h2>text after cell</h2>
+<p>+----+
+| A0 |   foo ?
++----+</p>
+<h2>open cell starts</h2>
+<p>+----+
+| A0 |
++----+
+|</p>
+<h2>no cell padding</h2>
+<table>
+    <tbody>
+        <tr>
+            <td>Arabesque</td>
+        </tr>
+    </tbody>
+</table>
+<h2>unterminated grids</h2>
+<p>+----+
+| A0 |
++---foo
+| B0 |
++----+</p>
+<h2>wrong align</h2>
+<p>+&gt;--:+
+| A0 |
++----+</p>
+<p>+:--&lt;+
+| A0 |
++----+</p>
+<p>+:-:-+
+| A0 |
++----+</p>
+<p>+-vv-+
+| A0 |
++----+</p>

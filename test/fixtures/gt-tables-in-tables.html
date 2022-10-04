@@ -1,0 +1,115 @@
+<h2>Tables in tables in tables</h2>
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Cards (one, two, many)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>One</td>
+            <td>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>A0</th>
+                            <th>B0</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A1</td>
+                            <td>B1</td>
+                        </tr>
+                        <tr>
+                            <td>some text with a | in it</td>
+                            <td>| or at the beginning</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">or some in code: <code>a + b = c</code>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>two</td>
+            <td>three</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>A0</th>
+                            <th>B0</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A1</td>
+                            <td>B1</td>
+                        </tr>
+                        <tr>
+                            <td>some text with a | in it</td>
+                            <td>| or at the beginning</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">or some in code: <code>a + b = c</code>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>four</td>
+            <td>five</td>
+        </tr>
+        <tr>
+            <td>nested</td>
+            <td>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">nested tables are fun!</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>r0</td>
+                            <td rowspan="3">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>A0</th>
+                                            <th>B0</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A1</td>
+                                            <td>B1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>some text with a | in it</td>
+                                            <td>| or at the beginning</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">or some in code: <code>a + b = c</code>.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>r1</td>
+                        </tr>
+                        <tr>
+                            <td>r2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

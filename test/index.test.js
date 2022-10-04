@@ -11,13 +11,75 @@
  */
 
 /* eslint-env mocha */
-
 import assert from 'assert';
-import { main } from '../src/index.js';
+import { readFile } from 'fs/promises';
+import { micromark } from 'micromark';
+import { gridTables, gridTablesHtml } from '../src/index.js';
 
-describe('Index Tests', () => {
-  it('index function is present', async () => {
-    const result = await main();
-    assert.strictEqual(result, 'Hello, world.');
+async function testMD(spec) {
+  const expected = await readFile(new URL(`./fixtures/${spec}.html`, import.meta.url), 'utf-8');
+  const source = await readFile(new URL(`./fixtures/${spec}.md`, import.meta.url), 'utf-8');
+
+  const actual = micromark(source, {
+    extensions: [gridTables()],
+    htmlExtensions: [gridTablesHtml()],
+  });
+
+  assert.strictEqual(actual.trim(), expected.trim());
+}
+
+describe('Micromark Extension Tests', () => {
+  it('table with spans', async () => {
+    await testMD('gt-spans');
+  });
+
+  it('table with align', async () => {
+    await testMD('gt-with-align');
+  });
+
+  it('large table', async () => {
+    await testMD('gt-large');
+  });
+
+  it('table with references', async () => {
+    // note that this one is not correct yet, as the inner micromark parse doesn't know about
+    // the outer definitions
+    await testMD('gt-with-references');
+  });
+
+  it('tables in tables', async () => {
+    await testMD('gt-tables-in-tables');
+  });
+
+  it('test no tables', async () => {
+    await testMD('gt-no-tables');
+  });
+
+  it('test wrong tables', async () => {
+    await testMD('gt-double-divider');
+  });
+
+  it('simple table', async () => {
+    await testMD('gt-simple');
+  });
+
+  it('single-cell table', async () => {
+    await testMD('gt-single-cell');
+  });
+
+  it('footer no header table', async () => {
+    await testMD('gt-footer-no-header');
+  });
+
+  it('header no footer table', async () => {
+    await testMD('gt-header-no-footer');
+  });
+
+  it('table with divider in content', async () => {
+    await testMD('gt-divider-in-content');
+  });
+
+  it('text with breaks', async () => {
+    await testMD('gt-with-breaks');
   });
 });
