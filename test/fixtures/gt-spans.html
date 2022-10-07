@@ -1,0 +1,78 @@
+<h2>Table with spans</h2>
+<table>
+    <tbody>
+        <tr>
+            <td colspan="2">AB0 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+            <td>C0</td>
+        </tr>
+        <tr>
+            <td>A1</td>
+            <td>B1</td>
+            <td>C1</td>
+        </tr>
+        <tr>
+            <td>A2</td>
+            <td colspan="2">BC2</td>
+        </tr>
+        <tr>
+            <td>A3</td>
+            <td rowspan="2">
+                <h1>B34</h1>
+                <ol>
+                <li>item one</li>
+                <li>item two</li>
+                <li>item three</li>
+                <li>item four</li>
+                <li>Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Vivamus
+                rhoncus elit nibh, sed vestibulum metus
+                tincidunt a.</li>
+                </ol>
+            </td>
+            <td>C3</td>
+        </tr>
+        <tr>
+            <td>
+                <h1>A4</h1>
+                <p>Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit.</p>
+            </td>
+            <td>C4</td>
+        </tr>
+        <tr>
+            <td rowspan="3">A567</td>
+            <td colspan="2">BC5</td>
+        </tr>
+        <tr>
+            <td>B6</td>
+            <td rowspan="3">C678</td>
+        </tr>
+        <tr>
+            <td>B7</td>
+        </tr>
+        <tr>
+            <td colspan="2">AB8</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Table with overlapping spans</h2>
+<table>
+    <tbody>
+        <tr>
+            <td rowspan="4">A1234</td>
+            <td>B1</td>
+            <td colspan="2">CD1</td>
+        </tr>
+        <tr>
+            <td colspan="2" rowspan="2">BC23</td>
+            <td>D2</td>
+        </tr>
+        <tr>
+            <td rowspan="2">D34</td>
+        </tr>
+        <tr>
+            <td>B4</td>
+            <td>C4</td>
+        </tr>
+    </tbody>
+</table>
