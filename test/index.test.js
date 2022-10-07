@@ -21,8 +21,8 @@ async function testMD(spec) {
   const source = await readFile(new URL(`./fixtures/${spec}.md`, import.meta.url), 'utf-8');
 
   const actual = micromark(source, {
-    extensions: [gridTables()],
-    htmlExtensions: [gridTablesHtml()],
+    extensions: [gridTables],
+    htmlExtensions: [gridTablesHtml],
   });
 
   assert.strictEqual(actual.trim(), expected.trim());

@@ -12,6 +12,19 @@
 
 # Grid Tables
 
+## What is this?
+
+This package contains extensions that add support for gridtables to [`micromark`][micromark].
+
+## When to use this
+
+These tools are all low-level.
+In many cases, you want to use [`@adobe/remark-gridtables`][plugin] with remark instead.
+
+When working with `mdast-util-from-markdown`, you must combine this package with
+[`@adobe/mdast-util-gridtables`][util].
+
+
 ## Overview
 
 GridTables look like this:
@@ -98,95 +111,6 @@ alignMarkerEnd   := ":" | "<";
 vAlignMarker     := "^" | "v" | "x"
 ```
 
-## MDAST Syntax tree
-
-The following interfaces are added to **[mdast][]** by this utility.
-
-### Nodes
-
-#### `GridTable`
-
-```idl
-interface GridTable <: Parent {
-  type: "gridTable"
-  children: [GridTableHeader|GridTableBody|GridTableFooter]
-}
-```
-
-#### `GridTableHeader`
-
-```idl
-interface GridTableHeader <: Parent {
-  type: "gtHead"
-  children: [GridTableRow]
-}
-```
-
-#### `GridTableBody`
-
-```idl
-interface GridTableBody <: Parent {
-  type: "gtBody"
-  children: [GridTableRow]
-}
-```
-
-#### `GridTableFoot`
-
-```idl
-interface GridTableFooter <: Parent {
-  type: "gtFoot"
-  children: [GridTableRow]
-}
-```
-
-#### `GridTableRow`
-
-```idl
-interface GridTableRow <: Parent {
-  type: "gtRow"
-  children: [GridTableCell]
-}
-```
-
-#### `GridTableCell`
-
-```idl
-interface GridTableCell <: Parent {
-  type: "gtCell"
-  colSpan: number >= 1
-  rowSpan: number >= 1
-  align: alignType
-  valign: valignType
-  children: [MdastContent]
-}
-```
-
-**GridTableCell** ([**Parent**][dfn-parent]) represents a header cell in a
-[**GridTable**][dfn-table], if its parent is a [*gridTableHead*][term-head], or a data
-cell otherwise.
-
-**GridTableCell** can be used where [**gridTableRow**][dfn-row-content] content is expected.
-Its content model is [**mdast**][dfn-phrasing-content] content, allowing full mdast documents.
-
-### Enumeration
-
-#### `alignType`
-
-```idl
-enum alignType {
-  "left" | "right" | "center" | "justify" | null
-}
-```
-
-#### `valignType`
-
-```idl
-enum alignType {
-  "top" | "bottom" | "middle" | null
-}
-```
-
 ## Usage
 
 ### Parsing with unified
@@ -194,7 +118,7 @@ enum alignType {
 ```js
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
-import { remarkGridTable } from '@adobe/helix-markdown-support/gridtable';
+import { remarkGridTable } from '@adobe/remark-gridtables';
 
 const mdast = unified()
   .use(remarkParse)
@@ -217,6 +141,19 @@ const hast = toHast(mdast, {
 });
 ```
 
+### Generating HTML
+
+```js
+import {micromark} from 'micromark'
+import {gridTables, gridTablesHtml} from '@adobe/micromark-extension-gridtables'
+
+const html = micromark(markdown, {
+  extensions: [gfmTable],
+  htmlExtensions: [gfmTableHtml]
+})
+
+console.log(html)
+```
 
 
 ## Installation
@@ -244,3 +181,9 @@ $ npm test
 ```bash
 $ npm run lint
 ```
+
+[micromark]: https://github.com/micromark/micromark
+
+[util]: https://github.com/@adobe/mdast-util-gridtables
+
+[plugin]: https://github.com/@adobe/remark-gridtables

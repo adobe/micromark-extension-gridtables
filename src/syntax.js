@@ -326,10 +326,8 @@ function parse() {
   }
 }
 
-export function gridTables(options = {}) {
-  return {
-    flow: {
-      [codes.plusSign]: parse(options),
-    },
-  };
-}
+export const gridTables = {
+  flow: {
+    [codes.plusSign]: parse(),
+  },
+};

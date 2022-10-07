@@ -311,23 +311,21 @@ function exitRowLine() {
   }
 }
 
-export function gridTablesHtml() {
-  return {
-    enter: {
-      [TYPE_TABLE]: enterTable,
-      [TYPE_HEADER]: enterSection('thead'),
-      [TYPE_BODY]: enterSection('tbody'),
-      [TYPE_FOOTER]: enterSection('tfoot'),
-      [TYPE_GRID_DIVIDER]: enterGridDivider,
-      [TYPE_ROW_LINE]: enterRowLine,
-    },
-    exit: {
-      [TYPE_TABLE]: exitTable,
-      [TYPE_HEADER]: exitHeader,
-      [TYPE_BODY]: exitHeader,
-      [TYPE_FOOTER]: exitHeader,
-      [TYPE_CELL]: exitCell,
-      [TYPE_ROW_LINE]: exitRowLine,
-    },
-  };
-}
+export const gridTablesHtml = {
+  enter: {
+    [TYPE_TABLE]: enterTable,
+    [TYPE_HEADER]: enterSection('thead'),
+    [TYPE_BODY]: enterSection('tbody'),
+    [TYPE_FOOTER]: enterSection('tfoot'),
+    [TYPE_GRID_DIVIDER]: enterGridDivider,
+    [TYPE_ROW_LINE]: enterRowLine,
+  },
+  exit: {
+    [TYPE_TABLE]: exitTable,
+    [TYPE_HEADER]: exitHeader,
+    [TYPE_BODY]: exitHeader,
+    [TYPE_FOOTER]: exitHeader,
+    [TYPE_CELL]: exitCell,
+    [TYPE_ROW_LINE]: exitRowLine,
+  },
+};

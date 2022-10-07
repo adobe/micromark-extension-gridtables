@@ -24,7 +24,7 @@ Adobe Stock Senior Director, Content, Sarah Casillas echoes Rivas’ sentiments.
 |                                                          | medicine, technology, social sciences                    |
 +----------------------------------------------------------+----------------------------------------------------------+
 | Test with non-lf escape                                  | Specialized fields of study with contextual cues: law,   |
-|                                                          | medicine, technology, social sciences\\                  |
+|                                                          | medicine, technology, social sciences                    |
 +----------------------------------------------------------+----------------------------------------------------------+
 | Test with a single break                                 |                                                          |
 +----------------------------------------------------------+----------------------------------------------------------+
