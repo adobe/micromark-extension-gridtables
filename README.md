@@ -184,6 +184,6 @@ $ npm run lint
 
 [micromark]: https://github.com/micromark/micromark
 
-[util]: https://github.com/@adobe/mdast-util-gridtables
+[util]: https://github.com/adobe/mdast-util-gridtables
 
-[plugin]: https://github.com/@adobe/remark-gridtables
+[plugin]: https://github.com/adobe/remark-gridtables
