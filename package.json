@@ -35,9 +35,9 @@
     "reporter-options": "configFile=.mocha-multi.json"
   },
   "dependencies": {
-    "micromark": "^4.0.0",
-    "micromark-util-character": "^2.0.1",
-    "micromark-util-symbol": "^2.0.0"
+    "micromark": "^3.2.0",
+    "micromark-util-character": "^1.2.0",
+    "micromark-util-symbol": "^1.1.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.3",
