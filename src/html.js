@@ -99,9 +99,12 @@ function exitTable() {
     const definitions = this.getData('definitions');
     if (definitions) {
       for (const def of Object.values(definitions)) {
-        const title = def.title ? ` ${JSON.stringify(def.title)}` : '';
-        sanitizedLines.push('');
-        sanitizedLines.push(`[${def.labelId}]: ${def.destination}${title}`);
+        const key = `[${def.labelId}]`;
+        if (sanitizedLines.find((line) => line.indexOf(key) >= 0)) {
+          const title = def.title ? ` ${JSON.stringify(def.title)}` : '';
+          sanitizedLines.push('');
+          sanitizedLines.push(`${key}: ${def.destination}${title}`);
+        }
       }
     }
     const cellContent = sanitizedLines.join('\n');
