@@ -1,6 +1,6 @@
 {
   "name": "@adobe/micromark-extension-gridtables",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Micromark Extension Gridtables",
   "keywords": [
     "micromark",
