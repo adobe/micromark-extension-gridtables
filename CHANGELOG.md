@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/adobe/micromark-extension-gridtables/compare/v1.0.2...v1.0.3) (2023-06-27)
+
+
+### Bug Fixes
+
+* **deps:** update external major (major) ([#45](https://github.com/adobe/micromark-extension-gridtables/issues/45)) ([ba9a751](https://github.com/adobe/micromark-extension-gridtables/commit/ba9a751c72b832f87bec8494171a48bcc0459593))
+
 ## [1.0.2](https://github.com/adobe/micromark-extension-gridtables/compare/v1.0.1...v1.0.2) (2023-06-27)
 
 
