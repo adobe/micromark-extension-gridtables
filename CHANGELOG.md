@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/adobe/micromark-extension-gridtables/compare/v1.0.1...v1.0.2) (2023-06-27)
+
+
+### Bug Fixes
+
+* slow html generation with many references ([#48](https://github.com/adobe/micromark-extension-gridtables/issues/48)) ([31bbc4a](https://github.com/adobe/micromark-extension-gridtables/commit/31bbc4a934bf16045cf2d526980f6abe15c59631)), closes [#46](https://github.com/adobe/micromark-extension-gridtables/issues/46)
+
 ## [1.0.1](https://github.com/adobe/micromark-extension-gridtables/compare/v1.0.0...v1.0.1) (2022-10-07)
 
 
