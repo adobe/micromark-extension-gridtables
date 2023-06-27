@@ -10,8 +10,8 @@
  * governing permissions and limitations under the License.
  */
 /* eslint-disable no-use-before-define,no-underscore-dangle,no-param-reassign */
-import { codes } from 'micromark-util-symbol/codes.js';
-import { types } from 'micromark-util-symbol/types.js';
+// eslint-disable-next-line import/no-unresolved
+import { codes, types } from 'micromark-util-symbol';
 import {
   markdownLineEnding,
   markdownSpace,
