@@ -82,4 +82,8 @@ describe('Micromark Extension Tests', () => {
   it('text with breaks', async () => {
     await testMD('gt-with-breaks');
   });
+
+  it('many refs', async () => {
+    await testMD('gt-many-refs');
+  });
 });
