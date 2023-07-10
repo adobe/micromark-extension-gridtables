@@ -25,6 +25,7 @@ module.exports = {
   },
   plugins: [
     'header',
+    'import',
   ],
   rules: {
     strict: 0,
@@ -74,5 +75,13 @@ module.exports = {
     'id-match': ['error', '^(?!.*?([wW][hH][iI][tT][eE]|[bB][lL][aA][cC][kK]).*[lL][iI][sS][tT]).*$', {
       properties: true,
     }],
+  },
+  settings: {
+    // see
+    // - https://github.com/import-js/eslint-plugin-import/issues/1810
+    // - https://www.npmjs.com/package/eslint-import-resolver-exports
+    'import/resolver': {
+      exports: {},
+    },
   },
 };
