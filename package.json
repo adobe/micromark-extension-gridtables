@@ -52,10 +52,10 @@
     "eslint-plugin-import": "2.29.1",
     "husky": "9.0.10",
     "junit-report-builder": "3.2.1",
-    "lint-staged": "15.2.1",
-    "mocha": "10.2.0",
+    "lint-staged": "15.2.2",
+    "mocha": "10.3.0",
     "mocha-multi-reporters": "1.5.1",
-    "semantic-release": "23.0.0"
+    "semantic-release": "23.0.2"
   },
   "lint-staged": {
     "*.js": "eslint",
