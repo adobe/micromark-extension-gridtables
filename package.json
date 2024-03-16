@@ -55,7 +55,7 @@
     "lint-staged": "15.2.2",
     "mocha": "10.3.0",
     "mocha-multi-reporters": "1.5.1",
-    "semantic-release": "23.0.2"
+    "semantic-release": "23.0.4"
   },
   "lint-staged": {
     "*.js": "eslint",
