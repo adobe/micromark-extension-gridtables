@@ -47,7 +47,9 @@ function parse() {
     }
     function lineEnding(code) {
       // consume line ending
+      effects.enter(types.lineEnding);
       effects.consume(code);
+      effects.exit(types.lineEnding);
       return lineStart;
     }
 
