@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/adobe/micromark-extension-gridtables/compare/v2.0.1...v2.0.2) (2024-04-02)
+
+
+### Bug Fixes
+
+* push/pull tokens ([#93](https://github.com/adobe/micromark-extension-gridtables/issues/93)) ([f0d334e](https://github.com/adobe/micromark-extension-gridtables/commit/f0d334ea003344af27879ba282b0baa2c7b988ab))
+
 ## [2.0.1](https://github.com/adobe/micromark-extension-gridtables/compare/v2.0.0...v2.0.1) (2024-04-02)
 
 
