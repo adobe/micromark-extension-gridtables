@@ -86,4 +86,8 @@ describe('Micromark Extension Tests', () => {
   it('many refs', async () => {
     await testMD('gt-many-refs');
   });
+
+  it('table in list', async () => {
+    await testMD('gt-table-in-list');
+  });
 });

@@ -36,6 +36,24 @@ function parse() {
     concrete: true,
   };
 
+  // special tokenizer to check for the line start. this is needed to we can avoid consuming
+  // the line ending after the table
+  function tokenizeLineStart(effects, ok, nok) {
+    function lineStart(code) {
+      if (code === codes.plusSign || code === codes.verticalBar) {
+        return ok(code);
+      }
+      return nok(code);
+    }
+    function lineEnding(code) {
+      // consume line ending
+      effects.consume(code);
+      return lineStart;
+    }
+
+    return lineEnding;
+  }
+
   function tokenizeTable(effects, ok, nok) {
     // positions of columns
     const cols = [0];
@@ -54,21 +72,13 @@ function parse() {
     }
 
     function lineStart(code) {
-      if (code === codes.plusSign || code === codes.verticalBar) {
-        rowLine = effects.enter(TYPE_ROW_LINE);
-        effects.enter(TYPE_CELL_DIVIDER);
-        effects.consume(code);
-        effects.exit(TYPE_CELL_DIVIDER);
-        colPos = 0;
-        numCols = 0;
-        return cellOrGridStart;
-      }
-      if (numRows < 3) {
-        return nok(code);
-      }
-      effects.exit(TYPE_BODY);
-      effects.exit(TYPE_TABLE);
-      return ok(code);
+      rowLine = effects.enter(TYPE_ROW_LINE);
+      effects.enter(TYPE_CELL_DIVIDER);
+      effects.consume(code);
+      effects.exit(TYPE_CELL_DIVIDER);
+      colPos = 0;
+      numCols = 0;
+      return cellOrGridStart;
     }
 
     function cellOrGridStart(code) {
@@ -115,23 +125,41 @@ function parse() {
       return cell(code);
     }
 
+    function endTable(code) {
+      if (numRows < 3) {
+        return nok(code);
+      }
+      effects.exit(TYPE_BODY);
+      effects.exit(TYPE_TABLE);
+      return ok(code);
+    }
+
     function lineEnd(code) {
       if (numCols === 0) {
         return nok(code);
       }
-      if (markdownLineEnding(code)) {
-        effects.enter(types.lineEnding);
-        effects.consume(code);
-        effects.exit(types.lineEnding);
-      }
       effects.exit(TYPE_ROW_LINE);
-      if (code === codes.eof) {
-        effects.exit(TYPE_BODY);
-        effects.exit(TYPE_TABLE);
-        return ok(code);
-      }
       numRows += 1;
-      return lineStart;
+
+      if (code === codes.eof) {
+        return endTable(code);
+      }
+
+      // since this function is only called for lineEnding or EOF, we can assume EOL here
+
+      // let's check if the grid table is finished and if not, go to line start
+      // this is needed so that we don't consume the line ending after the table
+      return effects.check(
+        { tokenize: tokenizeLineStart },
+        (cd) => {
+          effects.enter(types.lineEnding);
+          effects.consume(cd);
+          effects.exit(types.lineEnding);
+          return lineStart;
+        },
+
+        endTable,
+      )(code);
     }
 
     function gridDivider(code) {
