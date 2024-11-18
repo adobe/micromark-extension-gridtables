@@ -11746,6 +11746,54 @@ ANSI 출력 강제(또는 비활성화 —no-ansi)
 | - 값을 수락하지 않음   |
 +----------------+
 
+## `setup:install`:anchor--1078:
+
+Magento 애플리케이션 설치
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Code (language bash)                                                                                                                                     |
++==========================================================================================================================================================+
+| ```                                                                                                                                                      |
+| bin/magento setup:install [--enable-debug-logging ENABLE-DEBUG-LOGGING] [--enable-syslog-logging ENABLE-SYSLOG-LOGGING] [--backend-frontname BACKEND-FR |
+| ONTNAME] [--id_salt ID_SALT] [--remote-storage-driver REMOTE-STORAGE-DRIVER] [--remote-storage-prefix REMOTE-STORAGE-PREFIX] [--remote-storage-endpoint |
+|  REMOTE-STORAGE-ENDPOINT] [--remote-storage-bucket REMOTE-STORAGE-BUCKET] [--remote-storage-region REMOTE-STORAGE-REGION] [--remote-storage-key REMOTE- |
+| STORAGE-KEY] [--remote-storage-secret REMOTE-STORAGE-SECRET] [--remote-storage-path-style REMOTE-STORAGE-PATH-STYLE] [--amqp-host AMQP-HOST] [--amqp-po |
+| rt AMQP-PORT] [--amqp-user AMQP-USER] [--amqp-password AMQP-PASSWORD] [--amqp-virtualhost AMQP-VIRTUALHOST] [--amqp-ssl AMQP-SSL] [--amqp-ssl-options A |
+| MQP-SSL-OPTIONS] [--consumers-wait-for-messages CONSUMERS-WAIT-FOR-MESSAGES] [--queue-default-connection QUEUE-DEFAULT-CONNECTION] [--key KEY] [--db-ho |
+| st DB-HOST] [--db-name DB-NAME] [--db-user DB-USER] [--db-engine DB-ENGINE] [--db-password DB-PASSWORD] [--db-prefix DB-PREFIX] [--db-model DB-MODEL] [ |
+| --db-init-statements DB-INIT-STATEMENTS] [-s\|--skip-db-validation] [--http-cache-hosts HTTP-CACHE-HOSTS] [--db-ssl-key DB-SSL-KEY] [--db-ssl-cert DB-S |
+| SL-CERT] [--db-ssl-ca DB-SSL-CA] [--db-ssl-verify] [--session-save SESSION-SAVE] [--session-save-redis-host SESSION-SAVE-REDIS-HOST] [--session-save-re |
+| dis-port SESSION-SAVE-REDIS-PORT] [--session-save-redis-password SESSION-SAVE-REDIS-PASSWORD] [--session-save-redis-timeout SESSION-SAVE-REDIS-TIMEOUT] |
+|  [--session-save-redis-persistent-id SESSION-SAVE-REDIS-PERSISTENT-ID] [--session-save-redis-db SESSION-SAVE-REDIS-DB] [--session-save-redis-compressio |
+| n-threshold SESSION-SAVE-REDIS-COMPRESSION-THRESHOLD] [--session-save-redis-compression-lib SESSION-SAVE-REDIS-COMPRESSION-LIB] [--session-save-redis-l |
+| og-level SESSION-SAVE-REDIS-LOG-LEVEL] [--session-save-redis-max-concurrency SESSION-SAVE-REDIS-MAX-CONCURRENCY] [--session-save-redis-break-after-fron |
+| tend SESSION-SAVE-REDIS-BREAK-AFTER-FRONTEND] [--session-save-redis-break-after-adminhtml SESSION-SAVE-REDIS-BREAK-AFTER-ADMINHTML] [--session-save-red |
+| is-first-lifetime SESSION-SAVE-REDIS-FIRST-LIFETIME] [--session-save-redis-bot-first-lifetime SESSION-SAVE-REDIS-BOT-FIRST-LIFETIME] [--session-save-re |
+| dis-bot-lifetime SESSION-SAVE-REDIS-BOT-LIFETIME] [--session-save-redis-disable-locking SESSION-SAVE-REDIS-DISABLE-LOCKING] [--session-save-redis-min-l |
+| ifetime SESSION-SAVE-REDIS-MIN-LIFETIME] [--session-save-redis-max-lifetime SESSION-SAVE-REDIS-MAX-LIFETIME] [--session-save-redis-sentinel-master SESS |
+| ION-SAVE-REDIS-SENTINEL-MASTER] [--session-save-redis-sentinel-servers SESSION-SAVE-REDIS-SENTINEL-SERVERS] [--session-save-redis-sentinel-verify-maste |
+| r SESSION-SAVE-REDIS-SENTINEL-VERIFY-MASTER] [--session-save-redis-sentinel-connect-retries SESSION-SAVE-REDIS-SENTINEL-CONNECT-RETRIES] [--cache-backe |
+| nd CACHE-BACKEND] [--cache-backend-redis-server CACHE-BACKEND-REDIS-SERVER] [--cache-backend-redis-db CACHE-BACKEND-REDIS-DB] [--cache-backend-redis-po |
+| rt CACHE-BACKEND-REDIS-PORT] [--cache-backend-redis-password CACHE-BACKEND-REDIS-PASSWORD] [--cache-backend-redis-compress-data CACHE-BACKEND-REDIS-COM |
+| PRESS-DATA] [--cache-backend-redis-compression-lib CACHE-BACKEND-REDIS-COMPRESSION-LIB] [--cache-id-prefix CACHE-ID-PREFIX] [--allow-parallel-generatio |
+| n] [--page-cache PAGE-CACHE] [--page-cache-redis-server PAGE-CACHE-REDIS-SERVER] [--page-cache-redis-db PAGE-CACHE-REDIS-DB] [--page-cache-redis-port P |
+| AGE-CACHE-REDIS-PORT] [--page-cache-redis-password PAGE-CACHE-REDIS-PASSWORD] [--page-cache-redis-compress-data PAGE-CACHE-REDIS-COMPRESS-DATA] [--page |
+| -cache-redis-compression-lib PAGE-CACHE-REDIS-COMPRESSION-LIB] [--page-cache-id-prefix PAGE-CACHE-ID-PREFIX] [--lock-provider LOCK-PROVIDER] [--lock-db |
+| -prefix LOCK-DB-PREFIX] [--lock-zookeeper-host LOCK-ZOOKEEPER-HOST] [--lock-zookeeper-path LOCK-ZOOKEEPER-PATH] [--lock-file-path LOCK-FILE-PATH] [--do |
+| cument-root-is-pub DOCUMENT-ROOT-IS-PUB] [--base-url BASE-URL] [--language LANGUAGE] [--timezone TIMEZONE] [--currency CURRENCY] [--use-rewrites USE-RE |
+| WRITES] [--use-secure USE-SECURE] [--base-url-secure BASE-URL-SECURE] [--use-secure-admin USE-SECURE-ADMIN] [--admin-use-security-key ADMIN-USE-SECURIT |
+| Y-KEY] [--admin-user [ADMIN-USER]] [--admin-password [ADMIN-PASSWORD]] [--admin-email [ADMIN-EMAIL]] [--admin-firstname [ADMIN-FIRSTNAME]] [--admin-las |
+| tname [ADMIN-LASTNAME]] [--search-engine SEARCH-ENGINE] [--elasticsearch-host ELASTICSEARCH-HOST] [--elasticsearch-port ELASTICSEARCH-PORT] [--elastics |
+| earch-enable-auth ELASTICSEARCH-ENABLE-AUTH] [--elasticsearch-username ELASTICSEARCH-USERNAME] [--elasticsearch-password ELASTICSEARCH-PASSWORD] [--ela |
+| sticsearch-index-prefix ELASTICSEARCH-INDEX-PREFIX] [--elasticsearch-timeout ELASTICSEARCH-TIMEOUT] [--opensearch-host OPENSEARCH-HOST] [--opensearch-p |
+| ort OPENSEARCH-PORT] [--opensearch-enable-auth OPENSEARCH-ENABLE-AUTH] [--opensearch-username OPENSEARCH-USERNAME] [--opensearch-password OPENSEARCH-PA |
+| SSWORD] [--opensearch-index-prefix OPENSEARCH-INDEX-PREFIX] [--opensearch-timeout OPENSEARCH-TIMEOUT] [--cleanup-database] [--sales-order-increment-pre |
+| fix SALES-ORDER-INCREMENT-PREFIX] [--use-sample-data] [--enable-modules [ENABLE-MODULES]] [--disable-modules [DISABLE-MODULES]] [--convert-old-scripts  |
+| [CONVERT-OLD-SCRIPTS]] [-i\|--interactive] [--safe-mode [SAFE-MODE]] [--data-restore [DATA-RESTORE]] [--dry-run [DRY-RUN]] [--magento-init-params MAGEN |
+| TO-INIT-PARAMS]                                                                                                                                          |
+| ```                                                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+
 ### `--enable-debug-logging`:anchor--1079:
 
 디버그 로깅 활성화
@@ -12078,4 +12126,2497 @@ http 캐시 호스트
 | - 값 필요    |
 +-----------+
 
+### `--db-ssl-key`:anchor--1111:
 
+SSL을 통해 DB 연결을 설정하기 위한 클라이언트 키 파일의 전체 경로
+
++-----------+
+| List (ol) |
++===========+
+| - 기본값: "  |
+| - 값 필요    |
++-----------+
+
+### `--db-ssl-cert`:anchor--1112:
+
+SSL을 통해 DB 연결을 설정하기 위한 클라이언트 인증서 파일의 전체 경로
+
++-----------+
+| List (ol) |
++===========+
+| - 기본값: "  |
+| - 값 필요    |
++-----------+
+
+### `--db-ssl-ca`:anchor--1113:
+
+SSL을 통해 DB 연결을 설정하기 위한 서버 인증서 파일의 전체 경로
+
++-----------+
+| List (ol) |
++===========+
+| - 기본값: "  |
+| - 값 필요    |
++-----------+
+
+### `--db-ssl-verify`:anchor--1114:
+
+서버 인증 확인
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--session-save`:anchor--1115:
+
+세션 저장 핸들러
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-host`:anchor--1116:
+
+UNIX 소켓을 사용하는 경우 정규화된 호스트 이름, IP 주소 또는 절대 경로
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-port`:anchor--1117:
+
+Redis 서버 수신 포트
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-password`:anchor--1118:
+
+Redis 서버 암호
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-timeout`:anchor--1119:
+
+연결 시간 제한(초)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-persistent-id`:anchor--1120:
+
+영구 연결을 활성화하는 고유 문자열
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-db`:anchor--1121:
+
+Redis 데이터베이스 번호
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-compression-threshold`:anchor--1122:
+
+Redis 압축 임계값
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-compression-lib`:anchor--1123:
+
+Redis 압축 라이브러리입니다. 값: gzip (기본값), lzf, lz4, snappy
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-log-level`:anchor--1124:
+
+Redis 로그 수준. 값: 0(최소 세부 정보) \~ 7(최대 세부 정보)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-max-concurrency`:anchor--1125:
+
+한 세션에 대한 잠금을 기다릴 수 있는 최대 프로세스 수
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-break-after-frontend`:anchor--1126:
+
+프론트엔드 세션에 대한 잠금을 해제하기 전에 대기할 시간(초)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-break-after-adminhtml`:anchor--1127:
+
+관리 세션에 대한 잠금을 해제하기 전에 대기할 시간(초)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-first-lifetime`:anchor--1128:
+
+첫 번째 쓰기 시 보트가 아닌 세션의 라이프타임(초)(비활성화하려면 0을 사용)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-bot-first-lifetime`:anchor--1129:
+
+첫 번째 쓰기 시 봇의 세션 수명(초)(비활성화하려면 0을 사용)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-bot-lifetime`:anchor--1130:
+
+후속 쓰기 시 봇에 대한 세션 수명(0을 사용하여 비활성화)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-disable-locking`:anchor--1131:
+
+잠금을 사용하지 않도록 설정합니다. 값: false(기본값), true
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-min-lifetime`:anchor--1132:
+
+Redis 최소 세션 수명(초)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-max-lifetime`:anchor--1133:
+
+Redis 최대 세션 수명(초)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-sentinel-master`:anchor--1134:
+
+레디스 센티넬 마스터
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-sentinel-servers`:anchor--1135:
+
+Redis Sentinel 서버, 쉼표로 구분
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-sentinel-verify-master`:anchor--1136:
+
+레디스 센티넬 검증 마스터 값: false(기본값), true
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--session-save-redis-sentinel-connect-retries`:anchor--1137:
+
+Redis Sentinel 연결 다시 시도.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--cache-backend`:anchor--1138:
+
+기본 캐시 처리기
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--cache-backend-redis-server`:anchor--1139:
+
+Redis 서버
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--cache-backend-redis-db`:anchor--1140:
+
+캐시에 대한 데이터베이스 번호
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--cache-backend-redis-port`:anchor--1141:
+
+Redis 서버 수신 포트
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--cache-backend-redis-password`:anchor--1142:
+
+Redis 서버 암호
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--cache-backend-redis-compress-data`:anchor--1143:
+
+압축을 비활성화하려면 0으로 설정합니다(기본값은 1, 활성화됨).
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--cache-backend-redis-compression-lib`:anchor--1144:
+
+사용할 압축 라이브러리 \[snappy,lzf,l4z,zstd,gzip] (자동으로 결정하려면 비워 둡니다.)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--cache-id-prefix`:anchor--1145:
+
+캐시 키의 ID 접두사
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--allow-parallel-generation`:anchor--1146:
+
+비차단 방식으로 캐시 생성 허용
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--page-cache`:anchor--1147:
+
+기본 캐시 처리기
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--page-cache-redis-server`:anchor--1148:
+
+Redis 서버
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--page-cache-redis-db`:anchor--1149:
+
+캐시에 대한 데이터베이스 번호
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--page-cache-redis-port`:anchor--1150:
+
+Redis 서버 수신 포트
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--page-cache-redis-password`:anchor--1151:
+
+Redis 서버 암호
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--page-cache-redis-compress-data`:anchor--1152:
+
+전체 페이지 캐시를 압축하려면 1로 설정합니다(비활성화하려면 0을 사용).
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--page-cache-redis-compression-lib`:anchor--1153:
+
+사용할 압축 라이브러리 \[snappy,lzf,l4z,zstd,gzip] (자동으로 결정하려면 비워 둡니다.)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--page-cache-id-prefix`:anchor--1154:
+
+캐시 키의 ID 접두사
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--lock-provider`:anchor--1155:
+
+공급자 이름 잠금
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--lock-db-prefix`:anchor--1156:
+
+잠금 충돌을 방지하기 위한 설치별 잠금 접두사
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--lock-zookeeper-host`:anchor--1157:
+
+Zookeeper 클러스터에 연결할 호스트 및 포트입니다. 예: 127.0.0.1:2181
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--lock-zookeeper-path`:anchor--1158:
+
+Zookeeper가 잠금을 저장하는 경로입니다. 기본 경로는 /magento/locks입니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--lock-file-path`:anchor--1159:
+
+파일 잠금이 저장되는 경로입니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--document-root-is-pub`:anchor--1160:
+
+Pub가 루트에 있고, true 또는 false만 표시할 수 있습니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--base-url`:anchor--1161:
+
+스토어를 사용할 수 있어야 하는 URL입니다. 더 이상 사용되지 않음, config:set을 경로 web/unsecure/base\_url과 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--language`:anchor--1162:
+
+기본 언어 코드. 사용되지 않음, config:set을 path general/locale/code와 함께 사용합니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--timezone`:anchor--1163:
+
+기본 시간대 코드. 사용하지 않음, config:set을 경로 일반/로케일/시간대로 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--currency`:anchor--1164:
+
+기본 통화 코드. 더 이상 사용되지 않음, 경로 통화/옵션/기본, 통화/옵션/기본 및 통화/옵션/허용과 함께 config:set 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--use-rewrites`:anchor--1165:
+
+재작성을 사용합니다. 지원 중단됨, config:set를 경로 web/seo/use\_rewrites와 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--use-secure`:anchor--1166:
+
+보안 URL을 사용합니다. SSL을 사용할 수 있는 경우에만 이 옵션을 활성화합니다. 지원 중단됨, config:set를 path web/secure/use\_in\_frontend와 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--base-url-secure`:anchor--1167:
+
+SSL 연결을 위한 기본 URL입니다. 더 이상 사용되지 않음, config:set을 경로 web/secure/base\_url과 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--use-secure-admin`:anchor--1168:
+
+SSL을 사용하여 관리 인터페이스를 실행합니다. 지원 중단됨, config:set를 경로 web/secure/use\_in\_adminhtml과 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--admin-use-security-key`:anchor--1169:
+
+Magento 관리 URL 및 양식에서 "보안 키" 기능을 사용할지 여부입니다. 사용되지 않음, config:set을 경로 admin/security/use\_form\_key와 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--admin-user`:anchor--1170:
+
+관리 사용자
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--admin-password`:anchor--1171:
+
+관리자 암호
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--admin-email`:anchor--1172:
+
+책임자 전자 메일
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--admin-firstname`:anchor--1173:
+
+관리자 이름
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--admin-lastname`:anchor--1174:
+
+관리자 성
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--search-engine`:anchor--1175:
+
+검색 엔진. 값: elasticsearch5, elasticsearch7, elasticsearch8, opensearch
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--elasticsearch-host`:anchor--1176:
+
+Elasticsearch 서버 호스트입니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--elasticsearch-port`:anchor--1177:
+
+Elasticsearch 서버 포트입니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--elasticsearch-enable-auth`:anchor--1178:
+
+인증을 활성화하려면 1로 설정합니다. (기본값은 0, 비활성화됨)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--elasticsearch-username`:anchor--1179:
+
+Elasticsearch 사용자 이름입니다. HTTP 인증이 활성화된 경우에만 적용 가능
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--elasticsearch-password`:anchor--1180:
+
+Elasticsearch 암호입니다. HTTP 인증이 활성화된 경우에만 적용 가능
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--elasticsearch-index-prefix`:anchor--1181:
+
+Elasticsearch 인덱스 접두사입니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--elasticsearch-timeout`:anchor--1182:
+
+Elasticsearch 서버 시간 제한.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--opensearch-host`:anchor--1183:
+
+OpenSearch 서버 호스트입니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--opensearch-port`:anchor--1184:
+
+OpenSearch 서버 포트입니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--opensearch-enable-auth`:anchor--1185:
+
+인증을 활성화하려면 1로 설정합니다. (기본값은 0, 비활성화됨)
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--opensearch-username`:anchor--1186:
+
+OpenSearch 사용자 이름입니다. HTTP 인증이 활성화된 경우에만 적용 가능
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--opensearch-password`:anchor--1187:
+
+암호 열기. HTTP 인증이 활성화된 경우에만 적용 가능
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--opensearch-index-prefix`:anchor--1188:
+
+OpenSearch 색인 접두사입니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--opensearch-timeout`:anchor--1189:
+
+OpenSearch 서버 시간 초과.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--cleanup-database`:anchor--1190:
+
+설치하기 전에 데이터베이스 정리
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--sales-order-increment-prefix`:anchor--1191:
+
+판매 주문 번호 접두사
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--use-sample-data`:anchor--1192:
+
+샘플 데이터 사용
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--enable-modules`:anchor--1193:
+
+쉼표로 구분된 모듈 이름 목록입니다. 설치하는 동안 포함해야 합니다. 사용 가능한 매직 매개 변수 "all".
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--disable-modules`:anchor--1194:
+
+쉼표로 구분된 모듈 이름 목록입니다. 설치하는 동안 피해야 합니다. 사용 가능한 매직 매개 변수 "all".
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--convert-old-scripts`:anchor--1195:
+
+이전 스크립트(InstallSchema, UpgradeSchema)를 db\_schema.xml 형식으로 변환할 수 있습니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 허용합니다.    |
++----------------+
+
+### `--interactive`, `-i`:anchor--1196:
+
+대화형 Magento 설치
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--safe-mode`:anchor--1197:
+
+열 제거와 같은 파괴적인 작업에서 덤프와 함께 Magento의 안전한 설치
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--data-restore`:anchor--1198:
+
+덤프에서 제거된 데이터 복원
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--dry-run`:anchor--1199:
+
+Magento 설치는 시험 실행 모드에서 실행됩니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 허용합니다.    |
++----------------+
+
+### `--magento-init-params`:anchor--1200:
+
+Magento 초기화 매개변수를 사용자 정의하는 명령에 추가합니다. 예: "MAGE\_MODE=developer\&MAGE\_DIRS\[기본]\[path]=/var/www/example.com\&MAGE\_DIRS\[캐시]\[path]=/var/tmp/cache"
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--help`, `-h`:anchor--1201:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1202:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1203:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1204:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1205:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1206:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1207:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+## `setup:performance:generate-fixtures`:anchor--1208:
+
+고정장치 생성
+
++-------------------------------------------------------------------------------------+
+| Code (language bash)                                                                |
++=====================================================================================+
+| ```                                                                                 |
+| bin/magento setup:performance:generate-fixtures [-s\|--skip-reindex] [--] <profile> |
+| ```                                                                                 |
++-------------------------------------------------------------------------------------+
+
+### `profile`:anchor--1209:
+
+프로필 구성 파일 경로
+
++-----------+
+| List (ol) |
++===========+
+| - 필수      |
++-----------+
+
+### `--skip-reindex`, `-s`:anchor--1210:
+
+색인 재지정 건너뛰기
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--help`, `-h`:anchor--1211:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1212:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1213:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1214:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1215:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1216:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1217:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+## `setup:rollback`:anchor--1218:
+
+Magento 응용 프로그램 코드베이스, 미디어 및 데이터베이스를 롤백합니다
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Code (language bash)                                                                                                                                     |
++==========================================================================================================================================================+
+| ```                                                                                                                                                      |
+| bin/magento setup:rollback [-c\|--code-file CODE-FILE] [-m\|--media-file MEDIA-FILE] [-d\|--db-file DB-FILE] [--magento-init-params MAGENTO-INIT-PARAMS |
+| ]                                                                                                                                                        |
+| ```                                                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+### `--code-file`, `-c`:anchor--1219:
+
+var/backups의 코드 백업 파일 기본 이름
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--media-file`, `-m`:anchor--1220:
+
+var/backups의 미디어 백업 파일 기본 이름
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--db-file`, `-d`:anchor--1221:
+
+Var/backups의 DB 백업 파일 기본 이름
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--magento-init-params`:anchor--1222:
+
+Magento 초기화 매개변수를 사용자 정의하는 명령에 추가합니다. 예: "MAGE\_MODE=developer\&MAGE\_DIRS\[기본]\[path]=/var/www/example.com\&MAGE\_DIRS\[캐시]\[path]=/var/tmp/cache"
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--help`, `-h`:anchor--1223:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1224:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1225:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1226:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1227:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1228:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1229:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+## `setup:static-content:deploy`:anchor--1230:
+
+정적 보기 파일 배포
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Code (language bash)                                                                                                                                     |
++==========================================================================================================================================================+
+| ```                                                                                                                                                      |
+| bin/magento setup:static-content:deploy [-f\|--force] [-s\|--strategy [STRATEGY]] [-a\|--area [AREA]] [--exclude-area [EXCLUDE-AREA]] [-t\|--theme [THE |
+| ME]] [--exclude-theme [EXCLUDE-THEME]] [-l\|--language [LANGUAGE]] [--exclude-language [EXCLUDE-LANGUAGE]] [-j\|--jobs [JOBS]] [--max-execution-time [M |
+| AX-EXECUTION-TIME]] [--symlink-locale] [--content-version CONTENT-VERSION] [--refresh-content-version-only] [--no-javascript] [--no-js-bundle] [--no-cs |
+| s] [--no-less] [--no-images] [--no-fonts] [--no-html] [--no-misc] [--no-html-minify] [--no-parent] [--] [<languages>...]                                 |
+| ```                                                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+### `languages`:anchor--1231:
+
+정적 보기 파일을 출력할 ISO-639 언어 코드의 공백으로 구분된 목록입니다.
+
++-------------+
+| List (ol)   |
++=============+
+| - 기본값: `[]` |
+|             |
+| - 배열        |
++-------------+
+
+### `--force`, `-f`:anchor--1232:
+
+모든 모드에서 파일을 배포합니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--strategy`, `-s`:anchor--1233:
+
+지정된 전략을 사용하여 파일을 배포합니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `quick` |
+| - 값을 허용합니다.    |
++----------------+
+
+### `--area`, `-a`:anchor--1234:
+
+지정된 영역에 대해서만 파일을 생성합니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `all`   |
+| - 여러 값을 허용합니다. |
++----------------+
+
+### `--exclude-area`:anchor--1235:
+
+지정된 영역에 대한 파일을 생성하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `none`  |
+| - 여러 값을 허용합니다. |
++----------------+
+
+### `--theme`, `-t`:anchor--1236:
+
+지정된 테마에만 정적 보기 파일을 생성합니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `all`   |
+| - 여러 값을 허용합니다. |
++----------------+
+
+### `--exclude-theme`:anchor--1237:
+
+지정된 테마에 대한 파일을 생성하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `none`  |
+| - 여러 값을 허용합니다. |
++----------------+
+
+### `--language`, `-l`:anchor--1238:
+
+지정된 언어에 대한 파일만 생성합니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `all`   |
+| - 여러 값을 허용합니다. |
++----------------+
+
+### `--exclude-language`:anchor--1239:
+
+지정된 언어에 대한 파일을 생성하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `none`  |
+| - 여러 값을 허용합니다. |
++----------------+
+
+### `--jobs`, `-j`:anchor--1240:
+
+지정된 작업 수를 사용하여 병렬 처리를 활성화합니다.
+
++-------------+
+| List (ol)   |
++=============+
+| - 기본값: `0`  |
+| - 값을 허용합니다. |
++-------------+
+
+### `--max-execution-time`:anchor--1241:
+
+배포 정적 프로세스의 최대 예상 실행 시간(초)입니다.
+
++--------------+
+| List (ol)    |
++==============+
+| - 기본값: `900` |
+| - 값을 허용합니다.  |
++--------------+
+
+### `--symlink-locale`:anchor--1242:
+
+배포를 위해 전달되지만 사용자 지정이 없는 해당 로케일의 파일에 대한 심볼릭 링크를 만듭니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--content-version`:anchor--1243:
+
+정적 콘텐츠의 사용자 지정 버전은 정적 콘텐츠 버전이 동일하고 캐싱이 제대로 작동하도록 여러 노드에서 배포를 실행하는 경우 사용할 수 있습니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--refresh-content-version-only`:anchor--1244:
+
+정적 콘텐츠 버전을 새로 고치는 것은 브라우저 캐시 및 CDN 캐시의 정적 콘텐츠를 새로 고치는 데만 사용할 수 있습니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-javascript`:anchor--1245:
+
+JavaScript 파일을 배포하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-js-bundle`:anchor--1246:
+
+JavaScript 번들 파일을 배포하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-css`:anchor--1247:
+
+CSS 파일을 배포하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-less`:anchor--1248:
+
+더 적은 수의 파일을 배포하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-images`:anchor--1249:
+
+이미지를 배포하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-fonts`:anchor--1250:
+
+글꼴 파일을 배포하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-html`:anchor--1251:
+
+HTML 파일을 배포하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-misc`:anchor--1252:
+
+다른 형식(.md, .jbf, .csv 등)의 파일은 배포하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-html-minify`:anchor--1253:
+
+HTML 파일을 축소하지 마십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-parent`:anchor--1254:
+
+상위 테마를 컴파일하지 마십시오. 빠른 및 표준 전략에서만 지원됩니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--help`, `-h`:anchor--1255:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1256:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1257:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1258:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1259:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1260:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1261:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+## `setup:store-config:set`:anchor--1262:
+
+저장소 구성을 설치합니다. 2.2.0 이후 더 이상 사용되지 않습니다. 대신 config:set 사용
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Code (language bash)                                                                                                                                     |
++==========================================================================================================================================================+
+| ```                                                                                                                                                      |
+| bin/magento setup:store-config:set [--base-url BASE-URL] [--language LANGUAGE] [--timezone TIMEZONE] [--currency CURRENCY] [--use-rewrites USE-REWRITES |
+| ] [--use-secure USE-SECURE] [--base-url-secure BASE-URL-SECURE] [--use-secure-admin USE-SECURE-ADMIN] [--admin-use-security-key ADMIN-USE-SECURITY-KEY] |
+|  [--magento-init-params MAGENTO-INIT-PARAMS]                                                                                                             |
+| ```                                                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+### `--base-url`:anchor--1263:
+
+스토어를 사용할 수 있어야 하는 URL입니다. 더 이상 사용되지 않음, config:set을 경로 web/unsecure/base\_url과 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--language`:anchor--1264:
+
+기본 언어 코드. 사용되지 않음, config:set을 path general/locale/code와 함께 사용합니다.
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--timezone`:anchor--1265:
+
+기본 시간대 코드. 사용하지 않음, config:set을 경로 일반/로케일/시간대로 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--currency`:anchor--1266:
+
+기본 통화 코드. 더 이상 사용되지 않음, 경로 통화/옵션/기본, 통화/옵션/기본 및 통화/옵션/허용과 함께 config:set 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--use-rewrites`:anchor--1267:
+
+재작성을 사용합니다. 지원 중단됨, config:set를 경로 web/seo/use\_rewrites와 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--use-secure`:anchor--1268:
+
+보안 URL을 사용합니다. SSL을 사용할 수 있는 경우에만 이 옵션을 활성화합니다. 지원 중단됨, config:set를 path web/secure/use\_in\_frontend와 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--base-url-secure`:anchor--1269:
+
+SSL 연결을 위한 기본 URL입니다. 더 이상 사용되지 않음, config:set을 경로 web/secure/base\_url과 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--use-secure-admin`:anchor--1270:
+
+SSL을 사용하여 관리 인터페이스를 실행합니다. 지원 중단됨, config:set를 경로 web/secure/use\_in\_adminhtml과 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--admin-use-security-key`:anchor--1271:
+
+Magento 관리 URL 및 양식에서 "보안 키" 기능을 사용할지 여부입니다. 사용되지 않음, config:set을 경로 admin/security/use\_form\_key와 함께 사용
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--magento-init-params`:anchor--1272:
+
+Magento 초기화 매개변수를 사용자 정의하는 명령에 추가합니다. 예: "MAGE\_MODE=developer\&MAGE\_DIRS\[기본]\[path]=/var/www/example.com\&MAGE\_DIRS\[캐시]\[path]=/var/tmp/cache"
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--help`, `-h`:anchor--1273:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1274:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1275:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1276:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1277:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1278:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1279:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+## `setup:uninstall`:anchor--1280:
+
+Magento 애플리케이션 제거
+
++-------------------------------------------------------------------------+
+| Code (language bash)                                                    |
++=========================================================================+
+| ```                                                                     |
+| bin/magento setup:uninstall [--magento-init-params MAGENTO-INIT-PARAMS] |
+| ```                                                                     |
++-------------------------------------------------------------------------+
+
+### `--magento-init-params`:anchor--1281:
+
+Magento 초기화 매개변수를 사용자 정의하는 명령에 추가합니다. 예: "MAGE\_MODE=developer\&MAGE\_DIRS\[기본]\[path]=/var/www/example.com\&MAGE\_DIRS\[캐시]\[path]=/var/tmp/cache"
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--help`, `-h`:anchor--1282:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1283:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1284:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1285:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1286:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1287:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1288:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+## `setup:upgrade`:anchor--1289:
+
+Magento 애플리케이션, DB 데이터 및 스키마 업그레이드
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Code (language bash)                                                                                                                                     |
++==========================================================================================================================================================+
+| ```                                                                                                                                                      |
+| bin/magento setup:upgrade [--keep-generated] [--convert-old-scripts [CONVERT-OLD-SCRIPTS]] [--safe-mode [SAFE-MODE]] [--data-restore [DATA-RESTORE]] [- |
+| -dry-run [DRY-RUN]] [--magento-init-params MAGENTO-INIT-PARAMS]                                                                                          |
+| ```                                                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+### `--keep-generated`:anchor--1290:
+
+생성된 파일이 삭제되지 않도록 합니다. 프로덕션에 배포할 때를 제외하고 이 옵션을 사용하지 않습니다. 자세한 내용은 시스템 통합자 또는 관리자에게 문의하십시오.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--convert-old-scripts`:anchor--1291:
+
+이전 스크립트(InstallSchema, UpgradeSchema)를 db\_schema.xml 형식으로 변환할 수 있습니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 허용합니다.    |
++----------------+
+
+### `--safe-mode`:anchor--1292:
+
+열 제거와 같은 파괴적인 작업에서 덤프와 함께 Magento의 안전한 설치
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--data-restore`:anchor--1293:
+
+덤프에서 제거된 데이터 복원
+
++-------------+
+| List (ol)   |
++=============+
+| - 값을 허용합니다. |
++-------------+
+
+### `--dry-run`:anchor--1294:
+
+Magento 설치는 시험 실행 모드에서 실행됩니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 허용합니다.    |
++----------------+
+
+### `--magento-init-params`:anchor--1295:
+
+Magento 초기화 매개변수를 사용자 정의하는 명령에 추가합니다. 예: "MAGE\_MODE=developer\&MAGE\_DIRS\[기본]\[path]=/var/www/example.com\&MAGE\_DIRS\[캐시]\[path]=/var/tmp/cache"
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--help`, `-h`:anchor--1296:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1297:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1298:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1299:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1300:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1301:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1302:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+## `store:list`:anchor--1303:
+
+저장소 목록을 표시합니다.
+
++------------------------+
+| Code (language bash)   |
++========================+
+| ```                    |
+| bin/magento store:list |
+| ```                    |
++------------------------+
+
+### `--help`, `-h`:anchor--1304:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1305:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1306:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1307:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1308:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1309:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1310:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+## `store:website:list`:anchor--1311:
+
+웹 사이트 목록 표시
+
++--------------------------------+
+| Code (language bash)           |
++================================+
+| ```                            |
+| bin/magento store:website:list |
+| ```                            |
++--------------------------------+
+
+### `--help`, `-h`:anchor--1312:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1313:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1314:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1315:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1316:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1317:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1318:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+## `theme:uninstall`:anchor--1319:
+
+테마 제거
+
++------------------------------------------------------------------------------------------+
+| Code (language bash)                                                                     |
++==========================================================================================+
+| ```                                                                                      |
+| bin/magento theme:uninstall [--backup-code] [-c\|--clear-static-content] [--] <theme>... |
+| ```                                                                                      |
++------------------------------------------------------------------------------------------+
+
+### `theme`:anchor--1320:
+
+테마의 경로. 테마 경로는 영역/공급업체/이름인 전체 경로로 지정해야 합니다. 예: frontend/Magento/blank
+
++-------------+
+| List (ol)   |
++=============+
+| - 기본값: `[]` |
+|             |
+| - 필수        |
+|             |
+| - 배열        |
++-------------+
+
+### `--backup-code`:anchor--1321:
+
+코드 백업 수행(임시 파일 제외)
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--clear-static-content`, `-c`:anchor--1322:
+
+생성된 정적 보기 파일을 지웁니다.
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--help`, `-h`:anchor--1323:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1324:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1325:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1326:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1327:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1328:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1329:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+## `varnish:vcl:generate`:anchor--1330:
+
+Varnish VCL을 생성하여 명령줄에 반향
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Code (language bash)                                                                                                                                     |
++==========================================================================================================================================================+
+| ```                                                                                                                                                      |
+| bin/magento varnish:vcl:generate [--access-list ACCESS-LIST] [--backend-host BACKEND-HOST] [--backend-port BACKEND-PORT] [--export-version EXPORT-VERSI |
+| ON] [--grace-period GRACE-PERIOD] [--output-file OUTPUT-FILE]                                                                                            |
+| ```                                                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+### `--access-list`:anchor--1331:
+
+바니시를 제거할 수 있는 IP 액세스 목록
+
++--------------------+
+| List (ol)          |
++====================+
+| - 기본값: `localhost` |
+| - 값 필요             |
++--------------------+
+
+### `--backend-host`:anchor--1332:
+
+웹 백엔드의 호스트
+
++--------------------+
+| List (ol)          |
++====================+
+| - 기본값: `localhost` |
+| - 값 필요             |
++--------------------+
+
+### `--backend-port`:anchor--1333:
+
+웹 백엔드의 포트
+
++---------------+
+| List (ol)     |
++===============+
+| - 기본값: `8080` |
+| - 값 필요        |
++---------------+
+
+### `--export-version`:anchor--1334:
+
+Varnish 파일의 버전
+
++------------+
+| List (ol)  |
++============+
+| - 기본값: `4` |
+| - 값 필요     |
++------------+
+
+### `--grace-period`:anchor--1335:
+
+유예 기간(초)
+
++--------------+
+| List (ol)    |
++==============+
+| - 기본값: `300` |
+| - 값 필요       |
++--------------+
+
+### `--output-file`:anchor--1336:
+
+vcl을 쓸 파일의 경로
+
++-----------+
+| List (ol) |
++===========+
+| - 값 필요    |
++-----------+
+
+### `--help`, `-h`:anchor--1337:
+
+해당 명령에 대한 도움말을 표시합니다. 명령을 지정하지 않으면 다음에 대한 도움말을 표시합니다.\<info>list\&lt;/info> 명령
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--quiet`, `-q`:anchor--1338:
+
+메시지 출력 안 함
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--verbose`, `-v|-vv|-vvv`:anchor--1339:
+
+메시지의 자세한 정도를 증가시킵니다. 일반 출력의 경우 1, 자세한 출력의 경우 2, 디버그의 경우 3
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--version`, `-V`:anchor--1340:
+
+이 응용 프로그램 버전 표시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--ansi`:anchor--1341:
+
+ANSI 출력 강제(또는 비활성화 —no-ansi)
+
++--------------+
+| List (ol)    |
++==============+
+| - 값을 수락하지 않음 |
++--------------+
+
+### `--no-ansi`:anchor--1342:
+
+"—ansi" 옵션 무시
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+### `--no-interaction`, `-n`:anchor--1343:
+
+대화식 질문하지 않음
+
++----------------+
+| List (ol)      |
++================+
+| - 기본값: `false` |
+| - 값을 수락하지 않음   |
++----------------+
+
+---
+
++--------------------------------------+
+| Toc                                  |
++======================================+
+| e36f2e69-ee80-4da7-b6a9-7e1ef4c482f6 |
++--------------------------------------+
+
+---
+
++-------------+
+| Doc Actions |
++=============+
+|             |
++-------------+
+
++----------+
+| Mini Toc |
++==========+
+|          |
++----------+
