@@ -90,4 +90,8 @@ describe('Micromark Extension Tests', () => {
   it('table in list', async () => {
     await testMD('gt-table-in-list');
   });
+
+  it('large md', async () => {
+    await testMD('large');
+  });
 });

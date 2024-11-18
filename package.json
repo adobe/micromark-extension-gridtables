@@ -37,7 +37,9 @@
   },
   "dependencies": {
     "micromark": "^4.0.0",
+    "micromark-core-commonmark": "^2.0.2",
     "micromark-util-character": "^2.0.0",
+    "micromark-util-subtokenize": "^2.0.2",
     "micromark-util-symbol": "^2.0.0"
   },
   "devDependencies": {
