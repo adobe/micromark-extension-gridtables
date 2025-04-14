@@ -16,10 +16,15 @@ import { readFile } from 'fs/promises';
 import { micromark } from 'micromark';
 import { gridTables, gridTablesHtml } from '../src/index.js';
 
-async function testMD(spec) {
-  const expected = await readFile(new URL(`./fixtures/${spec}.html`, import.meta.url), 'utf-8');
-  const source = await readFile(new URL(`./fixtures/${spec}.md`, import.meta.url), 'utf-8');
-
+async function testMD(spec, source = '', expected = '') {
+  if (!expected) {
+    // eslint-disable-next-line no-param-reassign
+    expected = await readFile(new URL(`./fixtures/${spec}.html`, import.meta.url), 'utf-8');
+  }
+  if (!source) {
+    // eslint-disable-next-line no-param-reassign
+    source = await readFile(new URL(`./fixtures/${spec}.md`, import.meta.url), 'utf-8');
+  }
   const actual = micromark(source, {
     extensions: [gridTables],
     htmlExtensions: [gridTablesHtml],
@@ -89,5 +94,42 @@ describe('Micromark Extension Tests', () => {
 
   it('table in list', async () => {
     await testMD('gt-table-in-list');
+  });
+
+  it('large md', async () => {
+    const count = 10000;
+    const snippet = `
+### Example
+
+Paragraph.
+
++-----------+
+| List (ol) |
++===========+
+| - select  |
++-----------+
+`;
+    const md = snippet.repeat(count);
+    const expected = `<h3>Example</h3>
+<p>Paragraph.</p>
+<table>
+    <thead>
+        <tr>
+            <th>List (ol)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <ul>
+                <li>select</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+`.repeat(count);
+
+    await testMD('large', md, expected);
   });
 });
