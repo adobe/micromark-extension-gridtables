@@ -95,6 +95,27 @@ function exitTable() {
   for (const cell of info.allCells) {
     const sanitizedLines = multiline(cell.lines);
 
+    // remove trailing `\` on lines followed by empty line. we assume that proper backslashes are
+    // always escaped inside gridtables. also see https://github.com/micromark/micromark/issues/118
+    for (let i = 0; i < sanitizedLines.length; i += 1) {
+      const line = sanitizedLines[i];
+      if (line.endsWith('\\') && !sanitizedLines[i + 1]) {
+        let idx = line.length - 1;
+        while (idx >= 0 && line[idx] === '\\') {
+          idx -= 1;
+        }
+        // only remove if odd number of backslashes
+        if ((line.length - idx + 2) % 2 === 0) {
+          if (line.length === 1) {
+            sanitizedLines.splice(i, 1);
+            i -= 1;
+          } else {
+            sanitizedLines[i] = line.substring(0, line.length - 1);
+          }
+        }
+      }
+    }
+
     // add the definitions from the main document maybe they could be injected dynamically...
     const definitions = this.getData('definitions');
     if (definitions) {
