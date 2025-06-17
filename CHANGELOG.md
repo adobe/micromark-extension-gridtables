@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/adobe/micromark-extension-gridtables/compare/v2.0.3...v2.0.4) (2025-06-17)
+
+
+### Bug Fixes
+
+* remove trailing backslashes before empty lines ([378933f](https://github.com/adobe/micromark-extension-gridtables/commit/378933fdbb282dcaf66491c220b8900f53a8a4f7))
+
 ## [2.0.3](https://github.com/adobe/micromark-extension-gridtables/compare/v2.0.2...v2.0.3) (2025-03-01)
 
 
