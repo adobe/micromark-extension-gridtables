@@ -88,6 +88,10 @@ describe('Micromark Extension Tests', () => {
     await testMD('gt-with-breaks');
   });
 
+  it('text with lonely breaks', async () => {
+    await testMD('gt-with-lonely-breaks');
+  });
+
   it('many refs', async () => {
     await testMD('gt-many-refs');
   });

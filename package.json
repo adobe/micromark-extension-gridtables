@@ -1,6 +1,6 @@
 {
   "name": "@adobe/micromark-extension-gridtables",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Micromark Extension Gridtables",
   "keywords": [
     "micromark",
@@ -46,15 +46,15 @@
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "@semantic-release/npm": "12.0.1",
-    "@stylistic/eslint-plugin-js": "2.10.1",
-    "c8": "10.1.2",
-    "eslint": "9.15.0",
-    "husky": "9.1.6",
+    "@stylistic/eslint-plugin-js": "4.4.1",
+    "c8": "10.1.3",
+    "eslint": "9.29.0",
+    "husky": "9.1.7",
     "junit-report-builder": "5.1.1",
-    "lint-staged": "15.2.10",
-    "mocha": "10.8.2",
+    "lint-staged": "16.1.1",
+    "mocha": "11.6.0",
     "mocha-multi-reporters": "1.5.1",
-    "semantic-release": "24.2.0"
+    "semantic-release": "24.2.5"
   },
   "lint-staged": {
     "*.js": "eslint",
