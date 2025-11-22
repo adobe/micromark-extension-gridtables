@@ -49,7 +49,7 @@
     "eslint": "9.39.1",
     "husky": "9.1.7",
     "junit-report-builder": "5.1.1",
-    "lint-staged": "16.2.6",
+    "lint-staged": "16.2.7",
     "mocha": "11.7.5",
     "mocha-multi-reporters": "1.5.1",
     "semantic-release": "25.0.2"
