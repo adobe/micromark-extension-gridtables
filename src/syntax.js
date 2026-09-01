@@ -234,7 +234,9 @@ function parse() {
     }
 
     function cell(code) {
-      colPos += 1;
+      if (!isZeroWidth(code)) {
+        colPos += 1;
+      }
       // find existing col
       if (code === codes.verticalBar || code === codes.plusSign) {
         const idx = cols.indexOf(colPos);
@@ -353,6 +355,14 @@ function parse() {
     }
     return events;
   }
+}
+
+function isZeroWidth(code) {
+  return code === 0x00AD  // soft hyphen
+    || code === 0x200B    // zero-width space
+    || code === 0x200C    // zero-width non-joiner
+    || code === 0x200D    // zero-width joiner
+    || code === 0xFEFF;   // zero-width no-break space / BOM
 }
 
 export const gridTables = {
