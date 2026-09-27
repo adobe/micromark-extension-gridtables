@@ -94,4 +94,8 @@ describe('Micromark Extension Tests', () => {
   it('table in list', async () => {
     await testMD('gt-table-in-list');
   });
+
+  it('cell with zero-width characters', async () => {
+    await testMD('gt-zero-width-chars');
+  });
 });
