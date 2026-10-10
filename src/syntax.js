@@ -249,8 +249,9 @@ function parse() {
         effects.consume(code);
         return cell;
       }
-      if (code === codes.eof) {
-        // row with cells never terminate eof
+      if (code === codes.eof || markdownLineEnding(code)) {
+        // row with cells never terminate eof,
+        // and a cell must be terminated on the same line
         return nok(code);
       }
 

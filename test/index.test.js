@@ -94,4 +94,8 @@ describe('Micromark Extension Tests', () => {
   it('table in list', async () => {
     await testMD('gt-table-in-list');
   });
+
+  it('table after list item starting with plus', async () => {
+    await testMD('gt-table-after-plus-list-item');
+  });
 });
