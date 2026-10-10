@@ -27,12 +27,12 @@ function excludeShebangs(comments) {
 // check if they are at the start of the file since that is already checked by
 // hasHeader().
 function getLeadingComments(context, node) {
-    var all = excludeShebangs(context.getSourceCode().getAllComments(node.body.length ? node.body[0] : node));
+    var all = excludeShebangs(context.sourceCode.getAllComments(node.body.length ? node.body[0] : node));
     if (all[0].type.toLowerCase() === "block") {
         return [all[0]];
     }
     for (var i = 1; i < all.length; ++i) {
-        var txt = context.getSourceCode().getText().slice(all[i - 1].range[1], all[i].range[0]);
+        var txt = context.sourceCode.getText().slice(all[i - 1].range[1], all[i].range[0]);
         if (!txt.match(/^(\r\n|\r|\n)$/)) {
             break;
         }
@@ -52,7 +52,7 @@ function genCommentBody(commentType, textArray, eol, numNewlines) {
 function genCommentsRange(context, comments, eol) {
     var start = comments[0].range[0];
     var end = comments.slice(-1)[0].range[1];
-    if (context.getSourceCode().text[end] === eol) {
+    if (context.sourceCode.text[end] === eol) {
         end += eol.length;
     }
     return [start, end];
@@ -173,7 +173,7 @@ module.exports = {
 
         return {
             Program: function(node) {
-                if (!hasHeader(context.getSourceCode().getText())) {
+                if (!hasHeader(context.sourceCode.getText())) {
                     context.report({
                         loc: node.loc,
                         message: "missing header",
@@ -218,7 +218,7 @@ module.exports = {
                                 }
                             }
 
-                            var postLineHeader = context.getSourceCode().text.substr(leadingComments[headerLines.length - 1].range[1], numNewlines * 2);
+                            var postLineHeader = context.sourceCode.text.substr(leadingComments[headerLines.length - 1].range[1], numNewlines * 2);
                             if (!matchesLineEndings(postLineHeader, numNewlines)) {
                                 context.report({
                                     loc: node.loc,
@@ -254,7 +254,7 @@ module.exports = {
                                     fix: canFix ? genReplaceFixer(commentType, context, leadingComments, fixLines, eol, numNewlines) : null
                                 });
                             } else {
-                                var postBlockHeader = context.getSourceCode().text.substr(leadingComments[0].range[1], numNewlines * 2);
+                                var postBlockHeader = context.sourceCode.text.substr(leadingComments[0].range[1], numNewlines * 2);
                                 if (!matchesLineEndings(postBlockHeader, numNewlines)) {
                                     context.report({
                                         loc: node.loc,
