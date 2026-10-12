@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/adobe/micromark-extension-gridtables/compare/v2.0.4...v2.0.5) (2026-10-12)
+
+
+### Bug Fixes
+
+* do not let grid table cells span line endings ([#220](https://github.com/adobe/micromark-extension-gridtables/issues/220)) ([3d69df9](https://github.com/adobe/micromark-extension-gridtables/commit/3d69df9a45e0a9e321af01c2c721fc9b172b53ca))
+
 ## [2.0.4](https://github.com/adobe/micromark-extension-gridtables/compare/v2.0.3...v2.0.4) (2025-06-17)
 
 
