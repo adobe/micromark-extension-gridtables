@@ -59,12 +59,19 @@ function parse() {
   function tokenizeTable(effects, ok, nok) {
     // positions of columns
     const cols = [0];
+    // Outer cell start -> nested table's left/right border positions. Remember these
+    // across lines so a nested body row can reuse the width found in its grid line.
+    const nestedTables = new Map();
     let numRows = 0;
     let numCols = 0;
     let colPos = 0;
     let rowLine = null;
     let align = '';
     let valign = '';
+    let cellStart = 0;
+    // Only this line's nested range is protected; -1 means normal outer-cell parsing.
+    let nestedEnd = -1;
+    let nestedCandidate;
     return start;
 
     function start(code) {
@@ -86,8 +93,12 @@ function parse() {
     function cellOrGridStart(code) {
       align = '';
       valign = '';
+      cellStart = colPos;
+      nestedEnd = -1;
       if (code === codes.dash || code === codes.equalsTo
         || code === codes.colon || code === codes.greaterThan) {
+        // An outer grid divider ends any nested-table continuation in this cell.
+        nestedTables.delete(cellStart);
         effects.enter(TYPE_GRID_DIVIDER)._colStart = colPos;
         colPos += 1;
         if (code === codes.colon) {
@@ -124,7 +135,207 @@ function parse() {
         effects.consume(code);
         return cellSpace;
       }
+      // Both '+' and '|' can begin a continuation: rowspans mix grid dividers
+      // with cell text. Try the remembered width before looking for a new grid.
+      if ((code === codes.plusSign || code === codes.verticalBar)
+        && nestedTables.get(cellStart)?.start === colPos + 1) {
+        // check() rolls back its input and token events, even on success. Commit
+        // only the detected range, then let cell() consume the original input.
+        return effects.check(
+          { tokenize: tokenizeNestedRow },
+          useNestedLine,
+          checkNestedGrid,
+        )(code);
+      }
+      return checkNestedGrid(code);
+    }
+
+    function checkNestedGrid(code) {
+      if (code === codes.plusSign) {
+        return effects.check(
+          { tokenize: tokenizeNestedGrid },
+          useNestedLine,
+          cell,
+        )(code);
+      }
+      nestedTables.delete(cellStart);
       return cell(code);
+    }
+
+    function useNestedLine(code) {
+      nestedTables.set(cellStart, nestedCandidate);
+      nestedEnd = nestedCandidate.end;
+      return cell(code);
+    }
+
+    function tokenizeNestedGrid(checkEffects, checkOk, checkNok) {
+      return tokenizeNestedLine(checkEffects, checkOk, checkNok, true);
+    }
+
+    function tokenizeNestedRow(checkEffects, checkOk, checkNok) {
+      return tokenizeNestedLine(checkEffects, checkOk, checkNok, false);
+    }
+
+    // Recognize one nested line without adding its columns to the outer table.
+    // Cell contents are parsed recursively later by the mdast/HTML extensions,
+    // so deeper nesting gets a fresh tokenizer rather than a column stack here.
+    function tokenizeNestedLine(checkEffects, checkOk, checkNok, grid) {
+      // cellSpace() has not consumed the first non-space character yet.
+      const startColumn = colPos + 1;
+      const previous = nestedTables.get(cellStart);
+      let column = startColumn;
+      let last;
+      let hasDivider = false;
+      let endColumn;
+      let parentEnd;
+      let confirming = false;
+      let seenContent = false;
+      let closingGrid = false;
+      let confirmationGrid;
+      let confirmationDivider;
+      return nestedStart;
+
+      function nestedStart(code) {
+        checkEffects.enter(TYPE_CELL);
+        checkEffects.consume(code);
+        column += 1;
+        return nestedContent;
+      }
+
+      function nestedContent(code) {
+        if (grid) {
+          // Find the right edge of a grid line, including alignment markers.
+          if (code === codes.plusSign || code === codes.dash || code === codes.equalsTo
+            || code === codes.colon || code === codes.greaterThan || code === codes.lessThan
+            || V_ALIGN_CODES[code]) {
+            hasDivider ||= code === codes.dash || code === codes.equalsTo;
+            last = code;
+            checkEffects.consume(code);
+            column += 1;
+            return nestedContent;
+          }
+          if (!hasDivider || last !== codes.plusSign) {
+            return checkNok(code);
+          }
+          return nestedEndCheck(code);
+        }
+        // Body rows must close at the same position as the preceding nested grid.
+        // Otherwise fall back to ordinary outer-cell parsing.
+        if (column === previous.end) {
+          if (code !== codes.verticalBar && code !== codes.plusSign) {
+            return checkNok(code);
+          }
+          checkEffects.consume(code);
+          column += 1;
+          return nestedEndCheck;
+        }
+        if (code === codes.eof || markdownLineEnding(code)) {
+          return checkNok(code);
+        }
+        checkEffects.consume(code);
+        column += 1;
+        return nestedContent;
+      }
+
+      function nestedEndCheck(code) {
+        if (!markdownSpace(code)) {
+          return checkNok(code);
+        }
+        endColumn = column - 1;
+        return nestedPadding(code);
+      }
+
+      function nestedPadding(code) {
+        if (markdownSpace(code)) {
+          checkEffects.consume(code);
+          column += 1;
+          return nestedPadding;
+        }
+        // Require padding followed by a real outer delimiter. A literal fragment
+        // such as "+---+ text" is not a complete nested grid line.
+        if ((code !== codes.verticalBar && code !== codes.plusSign) || !cols.includes(column)) {
+          return checkNok(code);
+        }
+        // A nested left border can coincide with an outer column, but so can
+        // an ordinary partial outer divider. Require a body and closing grid
+        // inside the same parent cell before choosing the nested interpretation.
+        if (grid && cols.includes(startColumn)) {
+          if (!confirming) {
+            confirming = true;
+            parentEnd = column;
+          } else if (column !== parentEnd) {
+            return checkNok(code);
+          }
+          if (!closingGrid) {
+            return confirmationSuffix(code);
+          }
+        }
+        nestedCandidate = { start: startColumn, end: endColumn };
+        checkEffects.exit(TYPE_CELL);
+        return checkOk(code);
+      }
+
+      function confirmationSuffix(code) {
+        if (code === codes.eof) {
+          return checkNok(code);
+        }
+        checkEffects.consume(code);
+        if (markdownLineEnding(code)) {
+          column = 0;
+          return confirmationPrefix;
+        }
+        return confirmationSuffix;
+      }
+
+      function confirmationPrefix(code) {
+        if (code === codes.eof || markdownLineEnding(code)) {
+          return checkNok(code);
+        }
+        if (column < startColumn) {
+          // Other outer cells may change rows, but this cell must keep its
+          // enclosing border and the whitespace before the nested left edge.
+          if ((column === cellStart && code !== codes.verticalBar && code !== codes.plusSign)
+            || (column > cellStart && !markdownSpace(code))) {
+            return checkNok(code);
+          }
+          checkEffects.consume(code);
+          column += 1;
+          return confirmationPrefix;
+        }
+        if (code !== codes.plusSign && code !== codes.verticalBar) {
+          return checkNok(code);
+        }
+        confirmationGrid = code === codes.plusSign;
+        confirmationDivider = false;
+        checkEffects.consume(code);
+        column += 1;
+        return confirmationContent;
+      }
+
+      function confirmationContent(code) {
+        if (column === endColumn) {
+          if (code !== codes.plusSign && code !== codes.verticalBar) {
+            return checkNok(code);
+          }
+          const fullGrid = confirmationGrid && confirmationDivider && code === codes.plusSign;
+          closingGrid = fullGrid && seenContent;
+          seenContent ||= !fullGrid;
+          checkEffects.consume(code);
+          column += 1;
+          return nestedEndCheck;
+        }
+        if (code === codes.eof || markdownLineEnding(code)) {
+          return checkNok(code);
+        }
+        confirmationGrid &&= code === codes.plusSign
+          || code === codes.dash || code === codes.equalsTo
+          || code === codes.colon || code === codes.greaterThan || code === codes.lessThan
+          || Boolean(V_ALIGN_CODES[code]);
+        confirmationDivider ||= code === codes.dash || code === codes.equalsTo;
+        checkEffects.consume(code);
+        column += 1;
+        return confirmationContent;
+      }
     }
 
     function endTable(code) {
@@ -238,7 +449,9 @@ function parse() {
       // find existing col
       if (code === codes.verticalBar || code === codes.plusSign) {
         const idx = cols.indexOf(colPos);
-        if (idx >= 0) {
+        // An inner delimiter remains cell content even if it aligns with an
+        // outer column. Resume recognizing outer delimiters after its right edge.
+        if (idx >= 0 && colPos > nestedEnd) {
           effects.exit(TYPE_CELL)._colEnd = colPos;
           effects.enter(TYPE_CELL_DIVIDER);
           effects.consume(code);
